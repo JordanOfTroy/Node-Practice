@@ -49,7 +49,10 @@ app.post(`/api/array/test`, ctrl.postNewObj)
 
 
  // DELETE
+ // Decided to practice working w/out the controller for this endpoint
+app.delete(`/api/array`, (req, res) => {
 
+})
 
  // OTHER/MISC
 

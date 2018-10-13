@@ -6,8 +6,17 @@ module.exports = {
   getAllObjs: (req, res) => {
     console.log(`getAllObjs has been hit`)
     let {query} = req
-    let {index} = query
-   res.status(200).send(data[index])
+    console.log('query.name:', query.name)
+    let {name} = query
+    let objArr = []
+    data.forEach(element => {
+      console.log('element.name:', element.name)
+      if (element.name === name) {
+        objArr.push(element)
+      } 
+    })
+    console.log('item:', objArr)
+   res.status(200).send(objArr)
   },
 
 
