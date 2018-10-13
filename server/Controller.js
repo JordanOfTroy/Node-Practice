@@ -5,8 +5,11 @@ testNumber = 1
 module.exports = {
   getAllObjs: (req, res) => {
     console.log(`getAllObjs has been hit`)
-   res.status(200).send(data)
+    let {query} = req
+    let {index} = query
+   res.status(200).send(data[index])
   },
+
 
   getByIndex: (req, res) => {
     console.log(`getByIndex has been hit`)
