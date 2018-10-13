@@ -1,5 +1,5 @@
 module.exports = function (req, res, next) {
-  if (!res.session.use) {
+  if (!req.session.use) {
     req.session.user = {}
   }
   next()
