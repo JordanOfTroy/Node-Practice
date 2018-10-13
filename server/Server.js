@@ -40,6 +40,7 @@ app.use(session({
 
  // GET
 app.get(`/api/array`, ctrl.getAllObjs)
+app.get(`/api/array/index/id/:index`, ctrl.getByIndex)
 
  // POST
 app.post(`/api/array`, ctrl.postNewObj)
