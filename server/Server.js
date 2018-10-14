@@ -8,6 +8,8 @@ const ctrl = require('./Controller'),
       sayHello = require('./middleware/sayHello'),
       data = require('../Data')
 
+let session_id_count = 1
+
 const app = express()
 const {
   SESSION_SECRET,
@@ -40,11 +42,23 @@ app.use(session({
  // GET
 app.get(`/api/array`, ctrl.getAllObjs)
 app.get(`/api/array/index/id/:index`, ctrl.getByIndex)
+app.get('/api/user/', (req, res) => {
+  res.status(200).send(req.session)
+})
 
  // POST
 app.post(`/api/array/test`, ctrl.postNewObj)
+app.post('/api/user', (req, res) => {
+  // adds and ID to the user obj on the session job. Then inc's the session_id_Count variable.
+  // console.log('session_start:', req.session)
+  req.session.user.session_id = session_id_count
+  session_id_count++
+  // console.log('session_end:', req.session)
+  res.status(200).send(req.session.user)
+})
 
- // PUT 
+ // PUT
+ // Decided to practice working w/out the controller for this endpoint
 app.put(`/api/array/:index`, (req, res) => {
   console.log('put EP has been hit')
   let{index} = req.params
