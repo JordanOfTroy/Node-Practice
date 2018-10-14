@@ -12,7 +12,6 @@ const app = express()
 const {
   SESSION_SECRET,
   SERVER_PORT,
-  CONNECTION_STRING
 } = process.env
 
 // massive(CONNECTION_STRING).then(db => app.set('db', db))
@@ -50,8 +49,11 @@ app.post(`/api/array/test`, ctrl.postNewObj)
 
  // DELETE
  // Decided to practice working w/out the controller for this endpoint
-app.delete(`/api/array`, (req, res) => {
-
+app.delete(`/api/array/:index`, (req, res) => {
+  console.log('delete EP has been hit')
+  let {index} = req.params
+  data.splice(index, 1)
+  res.status(200).send(data)
 })
 
  // OTHER/MISC
