@@ -45,7 +45,14 @@ app.get(`/api/array/index/id/:index`, ctrl.getByIndex)
 app.post(`/api/array/test`, ctrl.postNewObj)
 
  // PUT 
-
+app.put(`/api/array/:index`, (req, res) => {
+  console.log('put EP has been hit')
+  let{index} = req.params
+  let{name, start, end, inx} = req.query
+  console.log(name, start, end, inx)
+  data.splice(index, 1, {"name": name, "start": start, "end": end, "index": inx})
+  res.status(200).send(data)
+})
 
  // DELETE
  // Decided to practice working w/out the controller for this endpoint
