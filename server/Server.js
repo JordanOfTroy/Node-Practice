@@ -54,7 +54,7 @@ app.post('/api/user', (req, res) => {
   req.session.user.session_id = session_id_count
   session_id_count++
   // console.log('session_end:', req.session)
-  res.status(200).send(req.session.user)
+  res.status(200).send(req.session)
 })
 
  // PUT
